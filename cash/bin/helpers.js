@@ -8,6 +8,7 @@ const config = new Conf();
 
 updateNotifier({pkg}).notify();
 
+// Function used to save the default currency to convert.
 const saveCurrencies = argv => {
   config.set('defaultFrom', argv[1] || config.get('defaultFrom', 'USD'));
   config.set(
@@ -25,8 +26,11 @@ const version = () => {
   process.exit(1);
 };
 
+
+// Print all help command in order to see how to use cash converter
 const help = () => {
   console.log(`
+
 Usage:
 
  $ ${chalk.cyan('node bin/index.js')} ${chalk.green('<amount>')} ${chalk.yellow(
@@ -57,6 +61,7 @@ Examples:
   process.exit(1);
 };
 
+// Check if args have been passed into parameters and call the right function
 const helpers = argv => {
   // Version
   if (argv.indexOf('--version') !== - 1 || argv.indexOf('-v') !== - 1) {

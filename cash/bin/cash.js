@@ -5,8 +5,10 @@ const chalk = require('chalk');
 const ora = require('ora');
 const currencies = require('../lib/currencies.json');
 
+
 const API = 'https://api.fixer.io/latest';
 
+// Function used to convert an amount of money into another currency
 const convert = configuration => {
   const {amount, to, from, response, loading} = configuration;
 
@@ -34,6 +36,7 @@ const convert = configuration => {
   process.exit(1);
 };
 
+// Cash is like the main function of Cash.JS, it calls the API and call the convert function
 const cash = async command => {
   const amount = command.amount;
   const from = command.from.toUpperCase();
